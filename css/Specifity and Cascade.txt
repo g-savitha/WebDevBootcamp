@@ -1,0 +1,6 @@
+https://specificity.keegan.st/
+https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+
+order of specificity:
+
+Elements and pseudo-elements < Classes, attributes and pseudo-classes < IDs

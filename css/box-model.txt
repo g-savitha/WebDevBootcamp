@@ -1,0 +1,10 @@
+border, margin and padding
+content width and height
+          margin
+--------------border---------------
+-       padding                   -
+-         |element|               -
+-                                 -
+-----------------------------------
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model

@@ -1,0 +1,19 @@
+https://www.cssfontstack.com/
+https://fonts.google.com/
+
+em in css (double the size of parent) -> MDN -> https://developer.mozilla.org/en-US/docs/Web/CSS/font-size 
+<p>hjgfiugfiugf<span>dhf</span>udfguyfd</p> 
+
+span{
+    font-size : 2.0em; /* It will be double the size of p*/
+}
+
+line-heights:
+
+p{
+    line-height: 2; /* space between the lines */
+}
+
+text-align
+
+text-decoration

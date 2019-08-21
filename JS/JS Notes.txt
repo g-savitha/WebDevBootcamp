@@ -1,0 +1,435 @@
+Javascript
+
+% Datatypes
+    Numbers,Strings,Boolean,Null and undefined
+    Numbers -> 4, 9.3, -10
+    Strings "a", "43" 
+    Booleans true false
+    null and undefined
+
+Null vs undefined.
+    Undefined:
+        var age; // undefined if no value is assigned
+
+    null -> explicitly nothing
+        var age = 50;
+        age = null;
+
+Built  in methods
+    alert
+    prompt
+    console.log
+    clear()
+
+Boolean logic
+Operators:
+    x = 5
+    x > 10 //false
+    x >= 5 true
+    x < 5 false
+    x <= 5 true
+    x == "5" true
+    x != "b" true
+    x==="5" false
+    x !== "5" true
+
+    == -> performs type coercion
+    === -> does not perform
+
+Truthy and falsy Values:
+    Values that arent actually true or false, are still inherently "truthy" or "falsy" 
+    when evaluated in a boolean context
+
+    eg:
+        !"HelloWorld" -> if this returns true, that means eword helloworld is false, else if it returns true, then the word is false
+        !"" -> //true -> by default "" -> false
+        !null -> //true -> by default null is false
+        !0 -> //true -> 0 is false by default
+        !-1 -> //false -> -1 is true by default
+        !NaN -> //true -> NaN is false by default
+
+
+        Falsy Values: false, 0, "", null, undefined, NaN 
+        remaining all are truthy values except these
+
+JS conditionals:
+    if
+    else if
+    else
+    //Prompt returns a string as output
+
+Loops:
+    While loop:
+        num = 2;
+        count = 1;
+        while(num < 20)
+            console.log("num count is :" count++);
+        //print each character in a String
+
+        var str = "hello"
+        var count = 0;
+        while(count < str.length)
+            console.log(str[count++]);
+
+    NOTE: Check if a string has a particular word in it. (using indexof method)
+
+    if that particular word doesnt exist, indexOf returns -1
+    if it exists it returns the number or position of that string.
+    to check whether that word exists or not
+    if(answer.indexOf("yes") !== -1)
+        //word exists, proceed further.
+
+    For loop
+    for(init; condition; increment)
+
+Functions:
+    Functions let us wrap bits of code into reuasable packages . They are one of the building blocks of JS
+    1. Declare a Function
+    2. Call a function
+
+    start with "function" keyword
+    Tip: Just call the function without paranthese, it gives u function definition.(shows the code of a particular function)
+
+    Arguments:
+        Input to Functions
+
+        Note: 
+        function greet(person1, person2, person 3){
+            console.log("Hi" + person1 + person2 + person3)
+        }
+        greet("Harry", "Hermoine"); // Doesnt throw error like other programming languages. instead gives output as Hi HarryHermoineUndefined
+
+    Return Keyword:
+        str = paris
+        str.slice(1) -> op: aris
+        if(typeof str === "number") // checks if str is a number 
+
+        Function Declaration vs Function expression
+
+        (https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/)
+        FUNCTION DECLARATION:
+
+            A Function Declaration defines a named function variable without requiring variable assignment. Function Declarations occur as standalone constructs and cannot be nested within non-function blocks. It’s helpful to think of them as siblings of Variable Declarations. Just as Variable Declarations must start with “var”, Function Declarations must begin with “function”.
+
+            function capitalize(str){
+                return str.charAt(0).toUpperCase() + str.splice(1);
+            }
+
+            The function name is visible within it’s scope and the scope of it’s parent (which is good because otherwise it would be unreachable)
+
+        FUNCTION EXPRESSION:
+            var capitalize = function(str){
+                return str.charAt(0).toUpperCase() + str.splice(1);
+            } -> if u write this way and in furure if u chnage capitalize to some number like 10 or 15. That function is lost
+
+            capitalize = 34
+            console.log(capitalize) -> 34
+            now if u do 
+            capitalize() -> throws an error
+
+            A Function Expression defines a function as a part of a larger expression syntax (typically a variable assignment ). Functions defined via Functions Expressions can be named or anonymous. Function Expressions must not start with “function” (hence the parentheses around the self invoking example below)
+
+            //anonymous function expression
+            var a = function() {
+                return 3;
+            }
+            
+            //named function expression
+            var a = function bar() {
+                return 3;
+            }
+            
+            //self invoking function expression
+            (function sayHello() {
+                alert("hello!");
+            })();
+
+            The function name (if any) is not visible outside of it’s scope (contrast with Function Declarations).
+
+        FUNCTION STATEMENT:
+            Function Statement is an extension of Function Declaration allowing the Function Declaration syntax to be used anywhere a statement is allowed.  It’s as yet non standard so not recommended for production development
+        
+        HOISTING:
+            Function declarations and function variables are always moved (‘hoisted’) to the top of their JavaScript scope by the JavaScript interpreter
+            (http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html)
+
+            When a function declaration is hoisted the entire function body is lifted with it
+
+            Note:
+            we were always taught that code after the return statement is unreachable
+
+            In JavaScript execution there is Context (which ECMA 5 breaks into LexicalEnvironment, VariableEnvironment and ThisBinding) and Process (a set of statements to be invoked in sequence). Declarations contribute to the VariableEnvironment when the execution scope is entered. They are distinct from Statements (such as return) and are not subject to their rules of process.
+
+    SCOPE:
+        Scope is the *context* that code is executed in.       
+
+        http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html 
+
+        function doMath(){
+            var x = 90;
+            console.log(x);
+        }
+
+        inside function x = 90, scope is limited only to function
+
+        var y = 90;
+
+        function doMoreMath(){
+            y = 70;
+            console.log(y);
+        }
+        before calling fn value of y = 90, after u call function y = 70. Now if u print y value is 70. if u want y to not to change its value, do the following
+
+        var y = 90;
+
+        function doMoreMath(){
+            var y = 70;
+            console.log(y);
+        }
+        now these two are considered as 2 different variables. by just adding a keyword "var" it will not override the previous value
+
+        var num = 8;
+        function doMath(){
+            num+=1;
+            if(num%5==0) return true;
+            else return false;
+        }
+        num+=1;
+        doMath(); -> op: true.
+
+        first 8 is assigned. it wont call doMath next, it will go to 197 and increment num and calls doMath in next line and goto 193 next to proceed further.
+    
+    HIGHER ORDER FUNCTIONS:
+        Higher order functions take a function as argument and also they return a function as value
+
+        function sing(){
+            console.log("Hello from the other side!..");
+        }
+
+        setinterval(sing,1000) //fnname, interval in ms. 
+        Note: We dont use parantheses for sing() here, coz we are not the one who is calling sing, set interval is calling the sing. setInterval returns a number, we can use that to clearTheInterval
+        or we can write anonymous function to have inline functions
+        setInterval(function(){
+              console.log("I'm an anonymous function!!")
+              console.log("Hello from the other side!..");
+        },1000);
+
+ARRAYS:
+//initialize empty array
+var friends = [];
+var friends = new Array();
+
+//arrays can hold any type of Data
+var random = [49,true,"Hermoine",null];
+
+var nums = [1,3,5,7];
+nums.length
+
+few built in methods
+push/pop (stack) 
+shift/unshift (queue) (opp to push and pop)
+indexOf 
+slice
+
+
+push:
+    Adds value at the end of the array and returns length of the array
+pop:
+    removes last ele in array, and returns last element in array
+unshift:
+    add element at the starting of the array
+shift:
+    remove first element from array
+indexOf: (returns the first occurence of an ele in a list)
+    use indexOf() to find index of an item in an array
+slice:
+    to copy parts of an array
+    var num = [1,2,3,4,5]; // op: [1,2,3,4,5]
+    var othernum = num.slice(1,3) // op: [2,3]
+
+    u can use splice to copy an entire array
+     var num = [1,2,3,4,5]; // op: [1,2,3,4,5]
+    var othernum = num.slice(); op: [1,2,3,4,5]
+
+ARRAY ITERATION:
+    for loop
+
+    forEach:
+        arr.forEach(someFunction)
+
+        var colors = ["red","green","blue"];
+        colors.forEach(function(color){
+            //color is a placeholder call it wherever u want
+            console.log(color); //color holds the value of each element of colors arr
+        })
+
+        function printColor(color){
+            console.log(color);
+        }
+        colors.forEach(printColor); //Dont add parantheses to printColor. JS will consider it as a new function
+
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+        https://www.loom.com/share/44bef2114cfb4dac9507084709d3102a
+
+    BUILD YOUR OWN FOREACH:
+        (watch this video again)
+OBJECTS:
+    Suppose i want to model a single person in JS, who has age, name and city
+
+    //If i could use array
+    var person1 = ["a",32,"hyd"];
+
+    to retrieve person's location. I need to know the exact index of location 
+    person1[2] //not very meaningful
+    lets say person2 accidengtally reversed the order
+    person2 = ["mum","b",87] // now if i do person2[2] it returns age
+    there is no logical order here
+
+    Array is not a perfect solution for every situation
+
+    here comes JS OBJECTS
+    var person = {
+        name: 'Alex';
+        age:31,
+        city: 'Hyderabad'
+    }; <k,v> pairs
+
+    var person = {
+        name: 'Travis',
+        age = '22',
+        city:'Delhi'
+    };
+
+    unlike arrays, elements inside objects dont have a particular order
+    it might store in the format of name, age, city
+    city, name, age
+    age, name, city
+    name, city, age etc. (3!) -> similar to java objects.
+
+    Doesnt matter in ehich order i declare them, they are all treated the same.
+    
+    RETRIEVE DATA:
+        Bracket and dot notation
+        Bracket:
+            console.log(person["name"]);
+        dot
+            console.log(person.name);
+        Differences between two notations:
+            //you cannot use dot notation if property starts with number
+            obj.1blah //invalid
+            obj("1blah") //valid
+
+            //you can lookup a variable using bracket notation
+
+            var str =   "name";
+            obj.str //doesnt look for name , it will look for property str not name property
+            obj(str) // does evaluate str and looks for name
+
+            //you cannot use dot for property with spaces
+            obj.fav color //invalid
+            obj("fav color") //valid
+    UPDATING DATA:
+        person["age"] += 1;
+        person.city = "London"
+    CREATING objects
+        //make an empty obj and add to that
+        var person = {}
+        person.name = "a";
+        person.age = 1;
+
+        //all at once 
+        var person = {
+            name : "a",
+            age : 1
+        }
+        //using new
+        var person = new Object();
+        person.name = "";
+        person.age = 1;
+    OBJECTS CAN HOLD ALL SORTS OF DATA:
+        var junkObj = {
+            age : 1,
+            color: 'red',
+            isHungry : true,
+            friends : ["B", "C"],
+            pet :{
+                name : "Rusty",
+                species: 'dog',
+                age: 3
+            }
+        };
+    
+    ARRAYS vs OBJECTS
+        Arrays:
+            1. in arrays everything is added in an order
+            2. Ideally we can consider arrays as special object (<k,v> pairs) but here keys are always numbers increasing sequentially.
+        Objects:
+            1. there is no particular order <k,v> pairs 
+            2. in some lang obj are called as dictionary
+    NESTED OBJECTS AND ARRAYS:
+        //post in a facebook
+        var post = [
+            {
+                title:"Beautiful picture",
+                author:"james",
+                comments:["Gross!","Such a bad taste dude"]
+            }
+            {
+                title:"What a beautiful Day!",
+                author:"jessie",
+                comments:["Roger that!", "I agree too"]
+            }
+            ];  
+
+            structure:
+            posts -> [Object,Object];
+            Object{
+                title: "" //String
+                author: "" //String
+                comments : ["",""] //array
+            }
+
+            posts[0].title //title of post
+
+            2nd comment of 2nd post
+            posts[1].comments[1]
+    JS methods
+        var obj ={
+            name :'a',
+            age:24,
+            isCool:false,
+            friends: ['b','c'],
+            //We can also add fucntions to objects
+            add : function(x,y){
+                return x + y;
+            } //we are adding a value to property add.
+        }
+        //prototype
+        obj{name:'a',age:24,friends:Array[2],add:function(x,y)};
+
+        obj.add(10,5) //15
+        console.log() //console is obj and log is method on that.
+
+        function speak(){
+            return "English!"; //for an english man
+        }
+         function speak(){
+            return "French!"; //for a french man
+        }
+
+        now when you call speak() , you get output as french. this is called as NAME SPACE COLLISION -> two different things pointing to same thing
+
+        var english = {};
+        english.speak = function(){
+            return "English!"
+        }
+        english.speak() //English
+
+    UNDERSCORE.JS
+        underscore.js namespaces all of the methods together 
+        eg: 
+        _.map, _.reduce
+    THIS Keyword
+
+         

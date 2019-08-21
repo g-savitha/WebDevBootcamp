@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reg Form</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form action="get">
+        <div>
+            <label for = "first">First Name</label>
+            <input id = "first" type = "text" placeholder="John" required>
+            <label for = "last">last Name</label>
+            <input id = "last" type = "text" placeholder="Smith" required>
+        </div>
+        <div>
+            <label for="m">Male</label>
+            <input id = "m" type = "radio" name="gender" >
+            <label for="f">female</label>
+            <input id = "f" type = "radio" name="gender" >
+            <label for="o">Other</label>
+            <input id = "o" type = "radio" name="gender" >
+        </div>
+        <div>
+            <label for="mail">Email</label>
+            <input id = "mail" type = "email" placeholder="your email" required>
+            <label for="pass">Password</label>
+            <input id = "pass" type = "password" pattern=".{5,10}" title="5 - 10 char" placeholder="password" required>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Birthday:</legend>
+                <label for="mon">Month</label>
+                <select id = "mon" name = "Month">
+                    <option>Jan</option>
+                    <option>Feb</option>
+                </select>
+                <label for="day">Day</label>
+                <select id = "day" name = "Day">
+                        <option>1</option>
+                        <option>2</option>
+                </select>
+                <label for="y">Year</label>
+                <select id = "y" name = "Year">
+                        <option>1995</option>
+                        <option>1996</option>
+                </select>
+            </fieldset>
+        </div>
+        <div>
+        <label for="check">I agree to terms and conditions</label>
+        <input id = "check" type = "checkbox" required></div>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
